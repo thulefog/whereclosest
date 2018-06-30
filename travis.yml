@@ -1,3 +1,3 @@
 language: swift
 xcode_project: whereclosest.xcodeproj 
-xcode_scheme: ImageBrowser
+xcode_scheme: whereclosest
