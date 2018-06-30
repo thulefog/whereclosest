@@ -196,7 +196,7 @@
                             <outlet property="delegate" destination="UZe-5T-VlO" id="Oof-gq-lsT"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Settings" id="s0F-ZC-jls" userLabel="Settings"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="QueryTab" id="s0F-ZC-jls" userLabel="Settings"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhp-GZ-enK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
