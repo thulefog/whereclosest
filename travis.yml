@@ -1,0 +1,4 @@
+script: sudo security delete-certificate -Z 0950B6CD3D2F37EA246A1AAA20DFAADBD6FE1F75 /Library/Keychains/System.keychain
+language: swift
+xcode_project: whereclosest.xcodeproj 
+xcode_scheme: whereclosest
