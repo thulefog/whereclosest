@@ -1,6 +1,0 @@
-before_install:
-  - security delete-certificate -c "Apple Worldwide Developer Relations Certification Authority"
-
-language: swift
-xcode_project: whereclosest.xcodeproj 
-xcode_scheme: whereclosest
