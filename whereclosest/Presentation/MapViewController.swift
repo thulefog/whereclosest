@@ -15,6 +15,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBOutlet weak var mapView: MKMapView!
     
+    let proximityUUID = UUID(uuidString: "EFF1456E-F28F-4EAC-8D04-738E73EACEDF")
+    
+    let beaconMajor : CLBeaconMajorValue = 100
+    let beaconMinor : CLBeaconMinorValue = 1
+    let beaconID = "com.aquavitdesigns.ignis.BeaconRegion"
+    
     var locationManager:CLLocationManager!
     
     var data: [[String: Any]]! = []
@@ -24,10 +30,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         startReceivingLocationChanges()
         
+        if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+            if CLLocationManager.isRangingAvailable() {
+                startScanning()
+            }
+        }
+        
         update(withData: data, animated: true)
     }
 
-    
     func startReceivingLocationChanges() {
 
         locationManager = CLLocationManager()
@@ -67,7 +78,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Drop a pin at user's Current Location
         let myAnnotation: MKPointAnnotation = MKPointAnnotation()
         myAnnotation.coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude, userLocation.coordinate.longitude);
-        myAnnotation.title = "Current location"
+        myAnnotation.title = "Current Location"
         mapView.addAnnotation(myAnnotation)
     }
 
@@ -75,6 +86,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     {
         print("Error \(error)")
     }
+    
+    func startScanning() {
+        let uuid = proximityUUID
+        let beaconRegion = CLBeaconRegion(proximityUUID: uuid!, major: beaconMajor, minor: beaconMinor, identifier: beaconID )
+        
+        locationManager.startMonitoring(for: beaconRegion)
+        locationManager.startRangingBeacons(in: beaconRegion)
+    }
+    
     func update(withData data: [[String: Any]]!, animated: Bool) {
         
         // Remember the data because we may not be able to display it yet
@@ -147,6 +167,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         annotationView!.image = pinImage
         
         return annotationView
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        if beacons.count > 0 {
+            updateDistance(beacons[0].proximity)
+        } else {
+            updateDistance(.unknown)
+        }
+    }
+    
+    func updateDistance(_ distance: CLProximity) {
+        UIView.animate(withDuration: 0.8) {
+            switch distance {
+            case .unknown:
+                print( "Beacon range: unknown" )
+                
+            case .far:
+                print( "Beacon range: far" )
+
+            case .near:
+                print( "Beacon range: near" )
+
+            case .immediate:
+                print( "Beacon range: immediate" )
+            }
+        }
     }
 }
 
