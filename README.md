@@ -47,7 +47,7 @@ Data collection from an external device such as a Polar Heart Rate Monitor or ot
 
 So putting this all together - how this fits with Domain Driven Design is that additional specific Application Services and in turn Query objects would reside behind Adapters to provide data to the user to guide decision making but keeping the overall scaffolding of the application design and implementation roughly consistent.  There are roughly similar use cases finding "where closest" but different underpinnings and code behind.
 
-The Type System to reach better abstraction for the different Query objects, but you get the gist...
+The Type System would need some scrubbing to reach better abstraction for the different Query objects, but you get the gist...
 
 # screens
 
