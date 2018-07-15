@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+public struct DataElementDescriptor
+{
+    public var Summary : String
+    public var Detail : String
+}
+
