@@ -19,7 +19,10 @@ class QueryViewController: UITableViewController {
     
     var data: [[String: Any]]! = []
     
-    var query: QueryDatasetPitStop!
+    var queryPitStop: QueryDatasetPitStop!
+    var queryStreetTree: QueryDatasetStreetTree!
+
+    var queryTideTable: QueryDatasetTideTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +34,17 @@ class QueryViewController: UITableViewController {
         let enabled_preference = UserDefaults.standard.bool(forKey: "enabled_preference")
         NSLog("enabled_preference: \(enabled_preference)")
         
-        query = QueryDatasetPitStop()
-        query.execute()
+        //NOTE: pre-fetch
+        //      - PitStop redundant to hardwired query in refresh path
+        //      - StreetTree returns substantially more records
+        queryPitStop = QueryDatasetPitStop()
+        queryPitStop.execute()
         
-        var queryTree = QueryDatasetStreetTree()
-        queryTree.execute()
+        queryStreetTree = QueryDatasetStreetTree()
+        queryStreetTree.execute()
+        
+        queryTideTable = QueryDatasetTideTable()
+        queryTideTable.execute()
         
         // Auto-refresh
         refresh(self)
@@ -46,10 +55,11 @@ class QueryViewController: UITableViewController {
     //JMW: added @objc
     @objc func refresh (_ sender: Any) {
 
-        //let cngQuery = client.query(dataset: "2zah-tuvt")
+        //StreetTree --> let cngQuery = client.query(dataset: "2zah-tuvt")
         let cngQuery = client.query(dataset: "snkr-6jdf")
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
 
         // NOTE: removed the orderDescending() action on "id" from original sample
         cngQuery.get { res in
@@ -69,7 +79,6 @@ class QueryViewController: UITableViewController {
             self.tableView.reloadData()
             self.updateMap(animated: true)
         }
-
     }
     
     /// Finds the map controller and updates its data
@@ -92,17 +101,15 @@ class QueryViewController: UITableViewController {
         
         let item = data[indexPath.row]
 
-        for (key,value) in item {
-            print( "KEY '\(key)' VALUE '\(value)' ")
+        //Diagnostic ---> for (key,value) in item { print( "KEY '\(key)' VALUE '\(value)' ") }
+        
+        if( queryPitStop.data.count > 0 )
+        {
+            var descriptor = queryPitStop.generateElementDescriptor(index: indexPath.row)
+            c?.textLabel?.text = descriptor.Summary
+            c?.detailTextLabel?.text = descriptor.Detail
         }
-        
-        let location = item["location"]! as! String
-        c?.textLabel?.text = location
-        
-        let neighborhood = item["neighborhood"]! as! String
-        let hoursofoperation = item["hoursofoperation"]! as! String
-        c?.detailTextLabel?.text = "\(neighborhood), \(location), \(hoursofoperation)"
-        
+
         return c!
     }
 

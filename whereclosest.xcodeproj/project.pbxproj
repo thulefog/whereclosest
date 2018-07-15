@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E45C164D20E30CD300319014 /* QueryDataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C164C20E30CD300319014 /* QueryDataset.swift */; };
+		E406B0F120FBB6C400157CBF /* QueryDatasetTideTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E406B0F020FBB6C400157CBF /* QueryDatasetTideTable.swift */; };
+		E45C164D20E30CD300319014 /* QueryDatasetPitStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C164C20E30CD300319014 /* QueryDatasetPitStop.swift */; };
 		E45CAD2E20DDC3A700319014 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E45CAD2D20DDC3A700319014 /* Settings.bundle */; };
 		E45CAD3020DDC42B00319014 /* SettingBundleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45CAD2F20DDC42B00319014 /* SettingBundleAdapter.swift */; };
+		E4DF4BF420FBA63D00FAD72F /* QueryDatasetStreetTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF4BF320FBA63D00FAD72F /* QueryDatasetStreetTree.swift */; };
+		E4DF4BF620FBB3D500FAD72F /* DataElementDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF4BF520FBB3D500FAD72F /* DataElementDescriptor.swift */; };
 		E4E4A9E820D2DE39004045A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E4A9E720D2DE39004045A5 /* AppDelegate.swift */; };
 		E4E4A9EF20D2DE39004045A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4E4A9ED20D2DE39004045A5 /* Main.storyboard */; };
 		E4E4A9F420D2DE3A004045A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4E4A9F220D2DE3A004045A5 /* LaunchScreen.storyboard */; };
@@ -39,9 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E45C164C20E30CD300319014 /* QueryDataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDataset.swift; sourceTree = "<group>"; };
+		E406B0F020FBB6C400157CBF /* QueryDatasetTideTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDatasetTideTable.swift; sourceTree = "<group>"; };
+		E45C164C20E30CD300319014 /* QueryDatasetPitStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDatasetPitStop.swift; sourceTree = "<group>"; };
 		E45CAD2D20DDC3A700319014 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E45CAD2F20DDC42B00319014 /* SettingBundleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBundleAdapter.swift; sourceTree = "<group>"; };
+		E4DF4BF320FBA63D00FAD72F /* QueryDatasetStreetTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDatasetStreetTree.swift; sourceTree = "<group>"; };
+		E4DF4BF520FBB3D500FAD72F /* DataElementDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataElementDescriptor.swift; sourceTree = "<group>"; };
 		E4E4A9E420D2DE39004045A5 /* whereclosest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whereclosest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E4A9E720D2DE39004045A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4E4A9EE20D2DE39004045A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,7 +101,10 @@
 		E45C164B20E30BE100319014 /* Query */ = {
 			isa = PBXGroup;
 			children = (
-				E45C164C20E30CD300319014 /* QueryDataset.swift */,
+				E45C164C20E30CD300319014 /* QueryDatasetPitStop.swift */,
+				E4DF4BF320FBA63D00FAD72F /* QueryDatasetStreetTree.swift */,
+				E4DF4BF520FBB3D500FAD72F /* DataElementDescriptor.swift */,
+				E406B0F020FBB6C400157CBF /* QueryDatasetTideTable.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -304,9 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E4AA1D20D2E0C5004045A5 /* MapViewController.swift in Sources */,
+				E4DF4BF620FBB3D500FAD72F /* DataElementDescriptor.swift in Sources */,
 				E4E4AA2020D2E375004045A5 /* SODAClient.swift in Sources */,
-				E45C164D20E30CD300319014 /* QueryDataset.swift in Sources */,
+				E4DF4BF420FBA63D00FAD72F /* QueryDatasetStreetTree.swift in Sources */,
+				E45C164D20E30CD300319014 /* QueryDatasetPitStop.swift in Sources */,
 				E4E4AA1C20D2E0C5004045A5 /* EventDetailsViewController.swift in Sources */,
+				E406B0F120FBB6C400157CBF /* QueryDatasetTideTable.swift in Sources */,
 				E4E4AA1B20D2E0C5004045A5 /* QueryViewController.swift in Sources */,
 				E45CAD3020DDC42B00319014 /* SettingBundleAdapter.swift in Sources */,
 				E4E4A9E820D2DE39004045A5 /* AppDelegate.swift in Sources */,
