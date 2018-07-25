@@ -48,6 +48,11 @@
 	<string>Please allow WhereClosest to access your location while using the application.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Please allow WhereClosest to access your location while using the application.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
