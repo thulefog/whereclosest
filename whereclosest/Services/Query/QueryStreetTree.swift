@@ -14,7 +14,7 @@ import Foundation
 // Street Tree list
 // https://dev.socrata.com/foundry/data.sfgov.org/2zah-tuvt
 
-public class QueryDatasetStreetTree
+public class QueryStreetTree
 {
     var session: SODAClient
     public var data: [[String: Any]]! = []

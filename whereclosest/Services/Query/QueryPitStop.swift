@@ -16,7 +16,7 @@ import UIKit
 // https://dev.socrata.com/foundry/data.sfgov.org/snkr-6jdf
 // https://data.sfgov.org/resource/snkr-6jdf.json
   
-public class QueryDatasetPitStop
+public class QueryPitStop
 {
     var session: SODAClient
     public var data: [[String: Any]]! = []

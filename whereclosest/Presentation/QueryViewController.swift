@@ -19,10 +19,10 @@ class QueryViewController: UITableViewController {
     
     var data: [[String: Any]]! = []
     
-    var queryPitStop: QueryDatasetPitStop!
-    var queryStreetTree: QueryDatasetStreetTree!
+    var queryPitStop: QueryPitStop!
+    var queryStreetTree: QueryStreetTree!
 
-    var queryTideTable: QueryDatasetTideTable!
+    var queryTideTable: QueryTideTable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +37,13 @@ class QueryViewController: UITableViewController {
         //NOTE: pre-fetch
         //      - PitStop redundant to hardwired query in refresh path
         //      - StreetTree returns substantially more records
-        queryPitStop = QueryDatasetPitStop()
+        queryPitStop = QueryPitStop()
         queryPitStop.execute()
         
-        queryStreetTree = QueryDatasetStreetTree()
+        queryStreetTree = QueryStreetTree()
         queryStreetTree.execute()
         
-        queryTideTable = QueryDatasetTideTable()
+        queryTideTable = QueryTideTable()
         queryTideTable.execute()
         
         // Auto-refresh

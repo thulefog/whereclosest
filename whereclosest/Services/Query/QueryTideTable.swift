@@ -8,12 +8,14 @@
 
 import Foundation
 
-public class QueryDatasetTideTable : NSObject, XMLParserDelegate
+public class QueryTideTable : NSObject, XMLParserDelegate
 {
     let PROSPECTIVE_DAY_IN_MILLISECONDS = 86400
 
     // https://tidesandcurrents.noaa.gov/api/
     // https://tidesandcurrents.noaa.gov/noaatidepredictions.html?id=9414131
+    // https://tidesandcurrents.noaa.gov/stations.html
+    // https://www.ndbc.noaa.gov/activestations.shtml
     
     public var data: [[String: Any]]! = []
     

@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		E401C0E82106912F0046224F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E401C0E72106912E0046224F /* README.md */; };
-		E406B0F120FBB6C400157CBF /* QueryDatasetTideTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E406B0F020FBB6C400157CBF /* QueryDatasetTideTable.swift */; };
-		E45C164D20E30CD300319014 /* QueryDatasetPitStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C164C20E30CD300319014 /* QueryDatasetPitStop.swift */; };
+		E401C0EA210BD5FC0046224F /* QueryTideStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E401C0E9210BD5FC0046224F /* QueryTideStation.swift */; };
+		E406B0F120FBB6C400157CBF /* QueryTideTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E406B0F020FBB6C400157CBF /* QueryTideTable.swift */; };
+		E45C164D20E30CD300319014 /* QueryPitStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C164C20E30CD300319014 /* QueryPitStop.swift */; };
 		E45CAD2E20DDC3A700319014 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E45CAD2D20DDC3A700319014 /* Settings.bundle */; };
 		E45CAD3020DDC42B00319014 /* SettingBundleAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45CAD2F20DDC42B00319014 /* SettingBundleAdapter.swift */; };
-		E4DF4BF420FBA63D00FAD72F /* QueryDatasetStreetTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF4BF320FBA63D00FAD72F /* QueryDatasetStreetTree.swift */; };
+		E4DF4BF420FBA63D00FAD72F /* QueryStreetTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF4BF320FBA63D00FAD72F /* QueryStreetTree.swift */; };
 		E4DF4BF620FBB3D500FAD72F /* DataElementDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF4BF520FBB3D500FAD72F /* DataElementDescriptor.swift */; };
 		E4E4A9E820D2DE39004045A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E4A9E720D2DE39004045A5 /* AppDelegate.swift */; };
 		E4E4A9EF20D2DE39004045A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4E4A9ED20D2DE39004045A5 /* Main.storyboard */; };
@@ -44,11 +45,12 @@
 
 /* Begin PBXFileReference section */
 		E401C0E72106912E0046224F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E406B0F020FBB6C400157CBF /* QueryDatasetTideTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDatasetTideTable.swift; sourceTree = "<group>"; };
-		E45C164C20E30CD300319014 /* QueryDatasetPitStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDatasetPitStop.swift; sourceTree = "<group>"; };
+		E401C0E9210BD5FC0046224F /* QueryTideStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTideStation.swift; sourceTree = "<group>"; };
+		E406B0F020FBB6C400157CBF /* QueryTideTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryTideTable.swift; sourceTree = "<group>"; };
+		E45C164C20E30CD300319014 /* QueryPitStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryPitStop.swift; sourceTree = "<group>"; };
 		E45CAD2D20DDC3A700319014 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E45CAD2F20DDC42B00319014 /* SettingBundleAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBundleAdapter.swift; sourceTree = "<group>"; };
-		E4DF4BF320FBA63D00FAD72F /* QueryDatasetStreetTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDatasetStreetTree.swift; sourceTree = "<group>"; };
+		E4DF4BF320FBA63D00FAD72F /* QueryStreetTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryStreetTree.swift; sourceTree = "<group>"; };
 		E4DF4BF520FBB3D500FAD72F /* DataElementDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataElementDescriptor.swift; sourceTree = "<group>"; };
 		E4E4A9E420D2DE39004045A5 /* whereclosest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whereclosest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E4A9E720D2DE39004045A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,9 +113,10 @@
 		E45C164B20E30BE100319014 /* Query */ = {
 			isa = PBXGroup;
 			children = (
-				E45C164C20E30CD300319014 /* QueryDatasetPitStop.swift */,
-				E4DF4BF320FBA63D00FAD72F /* QueryDatasetStreetTree.swift */,
-				E406B0F020FBB6C400157CBF /* QueryDatasetTideTable.swift */,
+				E45C164C20E30CD300319014 /* QueryPitStop.swift */,
+				E4DF4BF320FBA63D00FAD72F /* QueryStreetTree.swift */,
+				E406B0F020FBB6C400157CBF /* QueryTideTable.swift */,
+				E401C0E9210BD5FC0046224F /* QueryTideStation.swift */,
 			);
 			path = Query;
 			sourceTree = "<group>";
@@ -327,10 +330,11 @@
 				E4E4AA1D20D2E0C5004045A5 /* MapViewController.swift in Sources */,
 				E4DF4BF620FBB3D500FAD72F /* DataElementDescriptor.swift in Sources */,
 				E4E4AA2020D2E375004045A5 /* SODAClient.swift in Sources */,
-				E4DF4BF420FBA63D00FAD72F /* QueryDatasetStreetTree.swift in Sources */,
-				E45C164D20E30CD300319014 /* QueryDatasetPitStop.swift in Sources */,
+				E4DF4BF420FBA63D00FAD72F /* QueryStreetTree.swift in Sources */,
+				E45C164D20E30CD300319014 /* QueryPitStop.swift in Sources */,
 				E4E4AA1C20D2E0C5004045A5 /* EventDetailsViewController.swift in Sources */,
-				E406B0F120FBB6C400157CBF /* QueryDatasetTideTable.swift in Sources */,
+				E406B0F120FBB6C400157CBF /* QueryTideTable.swift in Sources */,
+				E401C0EA210BD5FC0046224F /* QueryTideStation.swift in Sources */,
 				E4E4AA1B20D2E0C5004045A5 /* QueryViewController.swift in Sources */,
 				E45CAD3020DDC42B00319014 /* SettingBundleAdapter.swift in Sources */,
 				E4E4A9E820D2DE39004045A5 /* AppDelegate.swift in Sources */,
