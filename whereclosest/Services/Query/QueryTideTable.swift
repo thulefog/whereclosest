@@ -1,5 +1,5 @@
 //
-//  QueryDatasetTideTable.swift
+//  QueryTideTable.swift
 //  whereclosest
 //
 //  Created by John Matthew Weston on 7/15/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class QueryTideTable : NSObject, XMLParserDelegate
+public class QueryTideTable : NSObject
 {
     let PROSPECTIVE_DAY_IN_MILLISECONDS = 86400
 
@@ -51,8 +51,6 @@ public class QueryTideTable : NSObject, XMLParserDelegate
         let timeInterval = TimeInterval( PROSPECTIVE_DAY_IN_MILLISECONDS )
         let endDateEdge = Date( timeInterval: timeInterval, since: startDateEdge  )
         let endDate = dateFormatter.string(from: endDateEdge )
-
-        self.getActiveStations()
         
         //SHORTCUT: should determine closest station, for now...
         
@@ -96,125 +94,41 @@ public class QueryTideTable : NSObject, XMLParserDelegate
         task?.resume()
     }
     
-    class Station {
-        var id: String = String()
-        var latitude: String = String()
-        var longitude: String = String()
-    }
-    
-    var stations: [Station] = []
-    var stationSequenceKey = "stations"
-    var stationElementKey = "station"
-    var currentElementName: String = String()
-    
-    func getActiveStations(){
-        
-        //NB: needed NSAppTransportSecurity + NSAllowsArbitraryLoads in plist for this
-        let url = NSURL(string: "https://www.ndbc.noaa.gov/activestations.xml")
-        
-        let task = URLSession.shared.dataTask( with: url! as URL) { data, response, error in
-            
-            guard error == nil else {
-                print("Error: Problem with URLSession dataTask")
-                return
-            }
-            if let error = error {
-                print("Error: Problem with URLSession dataTask")
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse,
-                (200...299).contains(httpResponse.statusCode) else {
-                    print("Error: Problem - server returned error code \(response)")
-                    return
-            }
-            
-            print( "DATA: \(data)" )
-
-            let parser = XMLParser(data: data!)
-            parser.delegate = self
-            parser.parse()
-            
-        }
-        
-        task.resume()
-    }
-    
-    //MARK:- XML Delegate methods
-    public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-
-        if elementName == stationSequenceKey {
-            //print("START parsing element \(elementName)")
-        }
-        else if elementName == stationElementKey {
-            //print( "START parsing element \(elementName)" )
-            currentElementName = elementName
-            
-            let station = Station()
-            station.id = attributeDict["id"]!
-            station.latitude = attributeDict["lat"]!
-            station.longitude = attributeDict["lon"]!
-            
-            stations.append(station)
-        }
-    }
-    
-    public func parser(_ parser: XMLParser, foundCharacters string: String) {
-        let data = string.trimmingCharacters(in:NSCharacterSet.whitespacesAndNewlines)
-        
-        /* NOTE: Data in this format, so this delegate not hit.
-         
-         ...
-        <stations created="2018-07-25T00:05:01UTC" count="1372">
-        <!--Site Elevation (elev attribute), when present, is reported in meters above mean sea level.-->
-        <station id="00922" lat="30" lon="-90" name="OTN201 - 4800922" owner="Dalhousie University" pgm="IOOS Partners" type="other" met="n" currents="n" waterquality="n" dart="n"/>
-         ...
-         
-         If data was formatted as below, this approach would be in play:
-           <station>
-             <id>...</id>
-             <lat>...</lat>
-              ...
-           </sttation>
-         
-         if (!data.isEmpty) {
-           if( currentElementName == "id" ) {
-             var stationIdValue += data
-           } else if currentElementName == "lat" {
-             var stationLatitudeValue += data
-           } else if currentElementName == "long" {
-             var stationLongitudeValue += data
-           }
-         }
-        
-        */
-
-    }
-    
-    func parser(parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == stationElementKey {
-            
-            ///print( "END parsing element \(elementName)" )
-            
-            // NOTE: see comment above about the found character delegate
-        }
-    }
-    
-    public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        // TODO: check elementName
-        ///print( "END parsing element \(elementName)" )
-    }
-    
-    public func parserDidEndDocument(_ parser: XMLParser) {
-        DispatchQueue.main.async {
-        
-            print( "END parserDidEndDocument" )
-        }
-    }
-    
-    public func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
-        print("ERROR: parseErrorOccurred: \(parseError)")
-    }
+    /*
+     { "predictions" : [
+     {"t":"2018-07-11 04:10", "v":"-1.111", "type":"L"},{"t":"2018-07-11 10:43", "v":"4.320", "type":"H"},{"t":"2018-07-11 15:28", "v":"2.305", "type":"L"},{"t":"2018-07-11 21:39", "v":"6.869", "type":"H"},{"t":"2018-07-12 04:57", "v":"-1.499", "type":"L"},{"t":"2018-07-12 11:34", "v":"4.528", "type":"H"},{"t":"2018-07-12 16:21", "v":"2.301", "type":"L"},{"t":"2018-07-12 22:27", "v":"6.982", "type":"H"}
+     ]}
+     */
     
     // TODO: public func generateElementDescriptor( index: Int ) -> DataElementDescriptor {...}
     
 }
+
+
+public struct TideTableSequence : Codable
+{
+    public var tidePredicationSet = [ TidePrediction]()
+    
+    public init( )
+    {
+    }
+    
+    public init( predictions: [TidePrediction])
+    {
+        tidePredicationSet = predictions
+    }
+}
+
+public struct TidePrediction : Codable {
+    public var _t: String = String()
+    public var _v: String = String()
+    public var _type: String = String()
+    
+    public init( time: String, value: String, type: String )
+    {
+        _t = time
+        _v = value
+        _type = type
+    }
+}
+

@@ -1,5 +1,5 @@
 //
-//  QueryDatasetStreetTree.swift
+//  QueryStreetTree.swift
 //  whereclosest
 //
 //  Created by John Matthew Weston on 7/15/18.
